@@ -41,3 +41,9 @@ Route::get('/majors/edit/{id}', [MajorController::class, 'edit']);
 Route::post('/majors/update/{id}', [MajorController::class, 'update'])->name('major.update');
 Route::delete('/majors/delete/{major}', [MajorController::class, 'delete']);
 
+//Export 
+
+Route::get('/students/export', [StudentController::class, 'export'])->name('export');
+
+//Import
+Route::post('/students/import', [StudentController::class, 'import'])->name('import');

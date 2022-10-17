@@ -40,7 +40,7 @@
                 <input type="radio" name="gender" id="female" class="form-check-input" value="female">
             </div>
             <div class="mb-3">
-                <select name="major_id" id="" class="form-select" required>
+                <select name="major_id" id="" class="form-select" >
                     <option value="" selected>Select Major</option>
                     @foreach ( $majors as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>

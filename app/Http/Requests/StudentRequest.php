@@ -31,6 +31,7 @@ class StudentRequest extends FormRequest
             'phone' => 'required',
             'gender' =>  'required',
             'major_id' => 'required',
+    
         ];
     }
 }
