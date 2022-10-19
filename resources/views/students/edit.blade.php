@@ -43,7 +43,7 @@
                 <select name="major_id" id="" class="form-select" required>
                     <option value="" selected>Select Major</option>
                     @foreach ( $majors as $item)
-                        <option value="{{ $item->id }}" @if($student->major->name == $item->name) selected @endif>{{ $item->name }}</option>
+                        <option value="{{ $item->id }}" @if(isset($student->major->name)??$student->major_name == $item->name) selected @endif>{{ $item->name }}</option>
                     @endforeach
                 </select>
             </div>

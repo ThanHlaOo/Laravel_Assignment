@@ -15,7 +15,7 @@ class AddMajorIdToStudentsTable extends Migration
     {
         Schema::table('students', function (Blueprint $table) {
             //$table->foreign('major_id')->references('id')->on('majors')->onDelete('cascade')->after('address');
-            $table->integer('major_id')->after('address');
+            $table->integer('major_id')->after('address')->nullable();
         });
     }
 

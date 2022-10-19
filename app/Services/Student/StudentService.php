@@ -61,6 +61,15 @@ class StudentService implements StudentServiceInterface
         return $this->studentDao->deleteStudent($student);
     }
     /**
+     * Search Student Data
+     *
+     * @param string $key to search
+     * @return Object Student object
+     */
+    public function search($validated){
+        return $this->studentDao->search($validated);
+    }
+    /**
      * Export Student Record
      *
      * @return Object Excel object

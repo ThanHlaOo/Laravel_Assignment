@@ -45,6 +45,7 @@
         @if(session('message'))
         <div class="alert alert-success">{{ session('message') }}</div>
          @endif
+        
         <table class="table table-striped">
             <thead>
                 <th>#</th>
@@ -66,7 +67,7 @@
                             <td>{{ $item->address }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->gender }}</td>
-                            <td>{{ $item->major->name ?? '' }}</td>
+                            <td>{{ $item->major->name ?? $item->major_name }}</td>
                             <td>
                                 <a href="{{ url("students/edit/{$item->id}") }}" class="btn btn-warning">Update</a>
                                 <form action="{{ url("students/delete/{$item->id}") }}" method="POST" class="d-inline-block">
@@ -78,7 +79,9 @@
                         </tr>
                     @endforeach
             </tbody>
+           
         </table>
+        {!! $students->links() !!}
     </div>
 </body>
 </html>

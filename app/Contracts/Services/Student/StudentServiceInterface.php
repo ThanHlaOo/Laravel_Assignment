@@ -26,6 +26,13 @@ interface StudentServiceInterface
      */
     public function updateStudent($validated, $id);
     /**
+     * Search Student Data
+     *
+     * @param string  $key to Search
+     * @return Object Student object
+     */
+    public function search($validated);
+    /**
      * Delete Student Record
      *
      * @param Object Student object

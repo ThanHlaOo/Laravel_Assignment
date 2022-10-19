@@ -29,6 +29,7 @@ Route::get('/', [StudentController::class, 'index'])->name('home');
 Route::get('/students', [StudentController::class, 'showList'])->name('student.list');
 Route::get('/students/add', [StudentController::class, 'create'])->name('student.add-form');
 Route::post('/students/create', [StudentController::class, 'addStudent'])->name('add-form');
+Route::get('/students/search', [StudentController::class, 'searchStudent'])->name('search');
 Route::get('/students/edit/{student}', [StudentController::class, 'edit'])->name('edit');
 Route::post('/students/update/{id}', [StudentController::class, 'update'])->name('update-form');
 Route::delete('/students/delete/{student}', [StudentController::class, 'delete'])->name('delete');

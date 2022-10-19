@@ -30,7 +30,7 @@ class StudentRequest extends FormRequest
             'address' => 'required',
             'phone' => 'required',
             'gender' =>  'required',
-            'major_id' => 'required',
+            'major_id' => 'nullable',
     
         ];
     }

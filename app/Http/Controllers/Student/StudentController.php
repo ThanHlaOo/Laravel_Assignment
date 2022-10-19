@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Contracts\Services\Major\MajorServiceInterface;
 use App\Contracts\Services\Student\StudentServiceInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\StudentRequest;
 use App\Models\Major;
 use App\Models\Student;
+use Illuminate\Support\Facades\Request;
 
 /**
  * Student Controller
@@ -14,15 +17,17 @@ use App\Models\Student;
 class StudentController extends Controller
 {
     private $studentInterface;
+    private $majorInterface;
     /**
      * Student Constructor
      *
      * @param Object Student Service Interface
      */
 
-    public function __construct(StudentServiceInterface $studentInterface)
+    public function __construct(StudentServiceInterface $studentInterface, MajorServiceInterface $majorInterface)
     {
         $this->studentInterface = $studentInterface;
+        $this->majorInterface = $majorInterface;
     }
     /**
      * Show Admin Panel
@@ -51,7 +56,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $major = Major::all();
+        $major = $this->majorInterface->getMajorList();
         return view('students.create', ['majors' => $major]);
     }
     /**
@@ -73,6 +78,12 @@ class StudentController extends Controller
 
         return redirect()->back()->with('erorr', 'Insert Error');
     }
+    public function searchStudent()
+    {
+        $student = $this->studentInterface->search(request());
+        //return $student;
+        return view('index', ['students' => $student]);
+    }
     /**
      * Show Edit Form
      *
@@ -81,7 +92,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $major = Major::all();
+        $major = $this->majorInterface->getMajorList();
         return view('students.edit', ['student' => $student, 'majors' => $major]);
     }
     /**

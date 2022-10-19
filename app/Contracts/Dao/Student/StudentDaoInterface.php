@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Contracts\Dao\Student;
 
 interface StudentDaoInterface
@@ -24,6 +25,14 @@ interface StudentDaoInterface
      * @return Object Student object
      */
     public function updateStudent($validated, $id);
+
+    /**
+     * Search Student Data
+     *
+     * @param string $key to Search
+     * @return Object Student object
+     */
+    public function search($validated);
     /**
      * Delete Student Record
      *

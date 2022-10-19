@@ -4,6 +4,7 @@ namespace App\Dao\Student;
 
 use App\Contracts\Dao\Student\StudentDaoInterface;
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class StudentDao implements StudentDaoInterface
 {
@@ -14,7 +15,7 @@ class StudentDao implements StudentDaoInterface
      */
     public function getStudentList()
     {
-        $student = Student::all();
+        $student = Student::paginate(10);
         return $student;
     }
     /**
@@ -52,10 +53,39 @@ class StudentDao implements StudentDaoInterface
             $student->phone = $validated['phone'];
             $student->gender = $validated['gender'];
             $student->major_id = $validated['major_id'];
-            $student->update();
+            $student->save();
             return $student;
         }
         return false;
+    }
+    /**
+     * Search Student Data
+     *
+     * @param string $key to Search
+     * @return Object Student object
+     */
+    public function search($validated)
+    {
+        $key = $validated['key'];
+        $startDate = $validated['startDate'];
+        $endDate =  $validated['endDate'];
+        $query = DB::table('students')
+            ->selectRaw('students.* , majors.name as major_name')
+            ->leftJoin('majors', 'majors.id', '=', 'students.major_id');
+        if ($startDate && $endDate) {
+            $query = $query->orWhereRaw("students.created_at >= '" . $startDate . "' AND students.created_at <= '" . $endDate . "'")
+                ->orWhereRaw("students.updated_at >= '" . $startDate . "' AND students.updated_at <= '" . $endDate . "'");
+        } else {
+            $query = $query->orWhereRaw("students.name LIKE '%$key%'")
+                ->orWhereRaw("students.phone LIKE '%$key%'")
+                ->orWhereRaw("students.address LIKE '%$key%'")
+                ->orwhereRaw("majors.name LIKE '%$key%'")
+                ->orwhereRaw("students.gender LIKE '%$key%'");
+        }
+
+        $student = $query->paginate(10);
+        $student->appends(request()->all());
+        return $student;
     }
     /**
      * Delete Student Record
