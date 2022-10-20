@@ -36,7 +36,8 @@ class ApiController extends Controller
      * Show Index Page
      * @return View Index Blade
      */
-    public function showList() {
+    public function showList()
+    {
         return view('ajax.students.index');
     }
 
@@ -44,8 +45,9 @@ class ApiController extends Controller
      * Show Create Form Page
      * @return View Create Form Blade
      */
-    
-    public function showCreate() {
+
+    public function showCreate()
+    {
         return view('ajax.students.create');
     }
 
@@ -53,14 +55,16 @@ class ApiController extends Controller
      * Show Edit Form Page
      * @return View Edit Form Blade
      */
-    public function showEdit() {
+    public function showEdit()
+    {
         return view('ajax.students.edit');
     }
 
     /**
      * show selected id data
      */
-    public function getStudentById($id){
+    public function getStudentById($id)
+    {
         $student = $this->studentInterface->getStudentById($id);
         return $student;
     }
@@ -69,8 +73,9 @@ class ApiController extends Controller
      * Get Student List 
      * @return Object Student object
      */
-    public function getStudentList() {
-        //return $this->studentInterface->getStuList()->get();   
+    public function getStudentList()
+    {
+
         return $this->studentInterface->getStudentListByAPI();
     }
 
@@ -78,10 +83,12 @@ class ApiController extends Controller
      * Get Major List
      * @return Object Major object
      */
-    public function getMajorList() {
+    public function getMajorList()
+    {
         return $this->majorInterface->getMajorList();
     }
-    public function addStudent(StudentRequest $request){
+    public function addStudent(StudentRequest $request)
+    {
         $validate = $request->validated();
         $this->studentInterface->addStudent($validate);
     }
@@ -95,17 +102,16 @@ class ApiController extends Controller
     public function updateStudent(StudentRequest $request, $id)
     {
         $validate = $request->validated();
-         $this->studentInterface->updateStudent($validate, $id);
+        $this->studentInterface->updateStudent($validate, $id);
     }
     /**
-     * Remove the specified resource from storage.
+     * Delete Student Record
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  integer  $id
+     * @return Object student object
      */
     public function destroyStudent($id)
     {
         return $this->studentInterface->deleteStudentByAPI($id);
     }
-
 }
