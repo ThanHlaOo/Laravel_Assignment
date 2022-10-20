@@ -11,6 +11,19 @@ interface StudentDaoInterface
      */
     public function getStudentList();
     /**
+     * Get Student List By API
+     *
+     * @return Object Student object
+     */
+    public function getStudentListByAPI();
+    /**
+     * Get Student By ID
+     *
+     * @param integer $id
+     * @return Object Student object
+     */
+    public function getStudentById($id);
+    /**
      * Add Student Record
      *
      * @param Request StudentRequest object
@@ -40,4 +53,11 @@ interface StudentDaoInterface
      * @return Object Student object
      */
     public function deleteStudent($student);
+    /**
+     * Delete Student Record By API
+     *
+     * @param integer $id
+     * @return Object student object
+     */
+    public function deleteStudentByAPI($id);
 }

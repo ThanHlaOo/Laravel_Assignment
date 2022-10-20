@@ -30,6 +30,25 @@ class StudentService implements StudentServiceInterface
         return $this->studentDao->getStudentList();
     }
     /**
+     * Get Student List By API
+     *
+     * @return Object Student object
+     */
+    public function getStudentListByAPI()
+    {
+        return $this->studentDao->getStudentListByAPI();
+    }
+    /**
+     * GET Student By Id
+     *
+     * @param integer $id
+     * @return Object Student object
+     */
+    public function getStudentById($id)
+    {
+        return $this->studentDao->getStudentById($id);
+    }
+    /**
      * Add Student Record
      *
      * @param Request StudentRequest object
@@ -59,6 +78,15 @@ class StudentService implements StudentServiceInterface
     public function deleteStudent($student)
     {
         return $this->studentDao->deleteStudent($student);
+    }
+    /**
+     * Delete student Record by API
+     *
+     * @param integer $id
+     * @return object Student Object
+     */
+    public function deleteStudentByAPI($id){
+        return $this->studentDao->deleteStudentByAPI($id);
     }
     /**
      * Search Student Data

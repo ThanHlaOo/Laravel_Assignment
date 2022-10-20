@@ -67,7 +67,6 @@ class StudentController extends Controller
      */
     public function addStudent(StudentRequest $request)
     {
-
         $validate = $request->validated();
         $student = $this->studentInterface->addStudent($validate);
         if ($student) {

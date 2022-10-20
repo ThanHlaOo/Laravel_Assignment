@@ -18,6 +18,20 @@ class StudentDao implements StudentDaoInterface
         $student = Student::paginate(10);
         return $student;
     }
+    public function getStudentListByAPI()
+    {
+        return Student::with('major')->get();
+    }
+    /**
+     * Get Student By ID
+     *
+     * @param integer $id
+     * @return Object Student object
+     */
+    public function getStudentById($id)
+    {
+        return Student::find($id);
+    }
     /**
      * Add Student Record
      *
@@ -97,5 +111,10 @@ class StudentDao implements StudentDaoInterface
     {
         $student->delete();
         return $student;
+    }
+    public function deleteStudentByAPI($id)
+    {
+        $student = Student::find($id);
+        return $student->delete();
     }
 }

@@ -11,6 +11,19 @@ interface StudentServiceInterface
      */
     public function getStudentList();
     /**
+     * Get Student List By API
+     *
+     * @return Object Student object
+     */
+    public function getStudentListByAPI();
+    /**
+     * Get Student By ID
+     *
+     * @param integer $id
+     * @return Object Student object
+     */
+    public function getStudentById($id);
+    /**
      * Add Student Record
      *
      * @param Request StudentRequest object
@@ -39,6 +52,13 @@ interface StudentServiceInterface
      * @return Object Student object
      */
     public function deleteStudent($student);
+    /**
+     * Delete Student Record by API
+     *
+     * @param integer $id
+     * @return object student object
+     */
+    public function deleteStudentByAPI($id);
     /**
      * Export Student Record
      *

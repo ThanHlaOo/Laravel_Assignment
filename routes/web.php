@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ApiController;
 use App\Http\Controllers\Major\MajorController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Task\TaskController;
@@ -48,3 +49,8 @@ Route::get('/students/export', [StudentController::class, 'export'])->name('expo
 
 //Import
 Route::post('/students/import', [StudentController::class, 'import'])->name('import');
+
+//api route
+Route::get('/ajax/students/' , [ApiController::class, 'showList']);
+Route::get('/ajax/students/create' , [ApiController::class, 'showCreate']);
+Route::get('/ajax/students/{id}/edit' , [ApiController::class, 'showEdit']);
