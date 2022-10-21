@@ -4,6 +4,7 @@ use App\Http\Controllers\API\ApiController;
 use App\Http\Controllers\Major\MajorController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Task\TaskController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,3 +55,6 @@ Route::post('/students/import', [StudentController::class, 'import'])->name('imp
 Route::get('/ajax/students/' , [ApiController::class, 'showList']);
 Route::get('/ajax/students/create' , [ApiController::class, 'showCreate']);
 Route::get('/ajax/students/{id}/edit' , [ApiController::class, 'showEdit']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');

@@ -26,6 +26,7 @@ class StudentController extends Controller
 
     public function __construct(StudentServiceInterface $studentInterface, MajorServiceInterface $majorInterface)
     {
+       $this->middleware('auth');
         $this->studentInterface = $studentInterface;
         $this->majorInterface = $majorInterface;
     }

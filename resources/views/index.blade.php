@@ -31,6 +31,15 @@
             </div>
             <div class="col-2">
                 <a href="{{ route('major.list') }}" class="btn btn-success">Major</a>
+                <a class="btn btn-danger" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </div>
             
         </div>

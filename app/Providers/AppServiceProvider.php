@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     $this->app->bind('App\Contracts\Services\Task\TaskServiceInterface', 'App\Services\Task\TaskService');
     $this->app->bind('App\Contracts\Services\Student\StudentServiceInterface', 'App\Services\Student\StudentService');
     $this->app->bind('App\Contracts\Services\Major\MajorServiceInterface', 'App\Services\Major\MajorService');
-    
+    $this->app->bind('App\Contracts\Services\Mail\MailServiceInterface', 'App\Services\Mail\MailService');
     }
 
     /**
